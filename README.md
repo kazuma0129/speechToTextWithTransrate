@@ -6,6 +6,9 @@
 
 [![Image from Gyazo](https://i.gyazo.com/4af99659b718cfb8b9f2500c839cdd0a.gif)](https://gyazo.com/4af99659b718cfb8b9f2500c839cdd0a)
 
+## 参照
+[Google翻訳APIを無料で作る方法](https://qiita.com/satto_sann/items/be4177360a0bc3691fdf)
+
 ## Build Setup
 
 ```bash
