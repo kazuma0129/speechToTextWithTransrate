@@ -2,6 +2,10 @@
 
 > speechToTextWithTransrate
 
+## Demo
+
+[![Image from Gyazo](https://i.gyazo.com/4af99659b718cfb8b9f2500c839cdd0a.gif)](https://gyazo.com/4af99659b718cfb8b9f2500c839cdd0a)
+
 ## Build Setup
 
 ```bash
