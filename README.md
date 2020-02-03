@@ -1,10 +1,10 @@
 # speechToText
 
-> My dazzling Nuxt.js project
+> speechToTextWithTransrate
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ yarn install
 

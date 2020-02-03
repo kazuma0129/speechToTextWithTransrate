@@ -1,7 +1,7 @@
 {
-  "name": "speechToText",
+  "name": "speechToTextWithTransrate",
   "version": "1.0.0",
-  "description": "My dazzling Nuxt.js project",
+  "description": "speechToTextWithTransrate",
   "author": "KazumaOhashi",
   "private": true,
   "scripts": {
