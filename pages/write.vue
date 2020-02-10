@@ -1,8 +1,8 @@
 <template>
   <v-container fluid fill-height>
-    <v-col col="12">
-      <v-row align="center" justify="center">
-        <speechToText />
+    <v-col col="12" align="center" justify="center">
+      <v-row>
+        <transrate />
       </v-row>
     </v-col>
   </v-container>
@@ -10,13 +10,12 @@
 
 <script>
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-import speechToText from '~/components/speechToText'
+import transrate from '~/components/transrate'
 
 export default {
-  name: 'Index',
+  name: 'Write',
   components: {
-    speechToText
+    transrate
   },
   data() {
     return {}

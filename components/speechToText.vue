@@ -22,19 +22,24 @@
       <v-row justify="center">
         <h1>{{ transratedText }}</h1>
       </v-row>
+
+      <v-row justify="center">
+        <h1>{{ reTransratedText }}</h1>
+      </v-row>
     </v-col>
   </v-container>
 </template>
 
 <script>
 export default {
-  name: 'TextPresenter',
+  name: 'SpeechToText',
   data() {
     return {
       state: Boolean,
 
       text: null,
       transratedText: null,
+      reTransratedText: null,
 
       /* eslint-disable-next-line */
       recognition: new webkitSpeechRecognition(),
@@ -43,7 +48,7 @@ export default {
       targetLang: 'en',
       source: null,
       target: null,
-      transrateApi: null
+      transrateApi: `https://script.google.com/macros/s/AKfycby5NoNTXTgLP9y_2wVeQ0MMPAO0F4rQZsHiQfEhD3AONkFakYU/exec?`
     }
   },
   watch: {
@@ -57,21 +62,33 @@ export default {
     this.speechRecognize()
     this.state = false
   },
-  mounted() {
-    this.source = `source=${this.sourceLang}`
-    this.target = `target=${this.targetLang}`
-    this.transrateApi = `https://script.google.com/macros/s/AKfycby5NoNTXTgLP9y_2wVeQ0MMPAO0F4rQZsHiQfEhD3AONkFakYU/exec?${this.source}&${this.target}&`
-  },
+  async mounted() {},
   methods: {
-    async getTransratedText(text) {
-      const url = this.transrateApi + 'text=' + text
+    async getTransratedText(text, sourceLang, targetLang) {
+      const reqSource = `&source=${sourceLang}`
+      const reqTarget = `&target=${targetLang}`
+      const reqText = `&text=${text}`
+      const url = this.transrateApi + reqTarget + reqSource + reqText
+      let result = ''
       await this.$axios.get(url).then((res) => {
-        this.transratedText = res.data.text
+        result = res.data.text
       })
+      return result
     },
     speechRecognize() {
-      this.recognition.onspeechend = () => {
-        this.getTransratedText(this.text)
+      this.recognition.onspeechend = async () => {
+        if (this.text) {
+          this.transratedText = await this.getTransratedText(
+            this.text,
+            'ja',
+            'en'
+          )
+          this.reTransratedText = await this.getTransratedText(
+            this.transratedText,
+            'en',
+            'ja'
+          )
+        }
       }
       this.recognition.onend = () => {
         if (this.state) {
